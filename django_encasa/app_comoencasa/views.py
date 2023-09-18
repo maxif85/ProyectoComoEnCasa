@@ -7,7 +7,7 @@ from django.template import loader
 # Create your views here.
 def index(request):    
     html = "<html><body>INDEX</body></html>"
-    return render(request, "django_encasa\index.html")
+    return render(request, "index.html")
     # return HttpResponse(html)
 
 def menu(request, nro_menu):    

@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,6 +14,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/IconoFavicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/IconoFavicon/favicon-16x16.png">
     <link rel="manifest" href="img/site.webmanifest">
+    <link rel="stylesheet" href="">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/2a437e5022.js" crossorigin="anonymous"></script>
@@ -27,10 +30,10 @@
             </a>
             <nav>	
                 <ul class="nav-bar">
-                    <li><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
-                    <li><a class="nav-link" href="{% url 'menu' %}">Menú</a></li>
+                    <li><a class="nav-link" href="{% url 'index-view' %}">Inicio</a></li>
+                    {% comment %} <li><a class="nav-link" href="{% url 'menu-view' %}">Menú</a></li> {% endcomment %}
                     {% comment %} <li><a class="nav-link" href="sucuarsales.html">Sucursales</a></li> {% endcomment %}
-                    <li><a class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
+                    {% comment %} <li><a class="nav-link" href="{% url 'contacto-view' %}">Contacto</a></li> {% endcomment %}
                 </ul>
             </nav>
         </header>
