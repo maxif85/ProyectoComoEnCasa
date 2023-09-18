@@ -20,8 +20,8 @@ from app_comoencasa import views
 
 urlpatterns = [
     path("index/", views.index, name="index-view"),
-    #path("menu/<str:nro_menu>", views.menu, name="menu-view"),
-    #path("contacto/", views.contacto, name="contacto-view"),
+    path("menu/<str:nro_menu>", views.menu, name="menu-view"),
+    path("contacto/", views.contacto, name="contacto-view"),
 ]
 
     
