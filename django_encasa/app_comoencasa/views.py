@@ -8,7 +8,6 @@ from django.template import loader
 def index(request):    
     html = "<html><body>INDEX</body></html>"
     return render(request, "index.html")
-    # return HttpResponse(html)
 
 def menu(request, nro_menu):    
     html = "<html><body>MENU</body></html>" + nro_menu
@@ -18,5 +17,8 @@ def contacto(request):
     html = "<html><body>CONTACTO</body></html>"
     return HttpResponse(html)
 
+def sucursales(request):
+    html = "<html><body>Sucursales</body></html>"
+    return HttpResponse(html)
 
 
