@@ -6,7 +6,6 @@ from django.template import loader
 
 # Create your views here.
 def index(request):    
-    html = "<html><body>INDEX</body></html>"
     return render(request, "index.html")
 
 def menu(request, nro_menu):    
@@ -18,7 +17,5 @@ def contacto(request):
     return HttpResponse(html)
 
 def sucursales(request):
-    html = "<html><body>Sucursales</body></html>"
-    return HttpResponse(html)
-
+    return render(request, "sucursales.html")
 
