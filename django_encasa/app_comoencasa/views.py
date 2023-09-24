@@ -13,8 +13,8 @@ def menu(request, nro_menu):
     return HttpResponse(html)
 
 def contacto(request):    
-    html = "<html><body>CONTACTO</body></html>"
-    return HttpResponse(html)
+    return render(request, "contacto.html")
+    
 
 def sucursales(request):
     return render(request, "sucursales.html")
