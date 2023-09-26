@@ -9,8 +9,9 @@ def index(request):
     return render(request, "index.html")
 
 def menu(request, nro_menu):    
-    html = "<html><body>MENU</body></html>" + nro_menu
-    return HttpResponse(html)
+    # html = "<html><body>MENU</body></html>" + nro_menu
+    # return HttpResponse(html)
+    return render(request, "menu.html")
 
 def contacto(request):    
     return render(request, "contacto.html")
