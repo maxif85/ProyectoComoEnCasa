@@ -11,7 +11,23 @@ def index(request):
 def menu(request, nro_menu):    
     # html = "<html><body>MENU</body></html>" + nro_menu
     # return HttpResponse(html)
-    return render(request, "menu.html")
+
+    lista_menu1 = ('Brochetas de Pollo y carne con pure.', '$2000')
+    lista_menu2 = ('Cachapa con queso y cochino frito.', '$1500')
+
+    context = {'menu1': 'Brochetas',
+               'detalle1': lista_menu1,            
+               'menu2': 'Cachapa',       
+               'detalle2': lista_menu2,               
+               'menu3': 'Empanadas',
+               'menu4': 'Pastel de Platano',
+               'menu5': 'Pasticho de carne',
+               'menu6': 'Patacon Maduro',
+               'menu7': 'Patacon Verde',
+               'menu8': 'Sopa de Res',
+               }
+
+    return render(request, "menu.html", context)
 
 def contacto(request):    
     return render(request, "contacto.html")
