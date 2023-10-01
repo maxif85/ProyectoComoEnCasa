@@ -2,6 +2,7 @@ from django.shortcuts import render
 from datetime import datetime
 from django.http import HttpResponse
 from django.template import loader
+from .forms import ContactoForm
 
 
 # Create your views here.
@@ -29,9 +30,17 @@ def menu(request, nro_menu):
 
     return render(request, "menu.html", context)
 
-def contacto(request):    
+def contacto(request):
+    formulario = ContactoForm()
+    context =  {
+        'contacto_form': formulario
+    }
+    return render(request, "contacto.html", context)
+
+
+"""def contacto(request):    
     return render(request, "contacto.html")
-    
+"""    
 
 def sucursales(request):
     return render(request, "sucursales.html")
