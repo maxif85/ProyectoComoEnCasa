@@ -452,7 +452,7 @@ ul{
   /*────────────────── 
       formulario
   ──────────────────*/
-  form{
+/*   form{
     color: var(--principal-fonts-color);
     border:solid 1px #000;
     background-color: #bdceb0;
@@ -472,7 +472,49 @@ ul{
   #submit{
     background-color: var(--principal-header-background);
     padding: 8px 0;
-  }
+  } */
+
+form{
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  width: 100%;
+  margin: 15px 0;
+}
+
+label{
+  margin-left: 15px;
+  margin-top: 8px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+input:focus {
+  border-color: #4285f4;
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+/* Estilo para los botones de búsqueda */
+button[type="submit"] {
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+/* Cambio de estilo al enfocar el botón de búsqueda */
+input[type="submit"]:hover {
+  background-color: #357ae8;
+}
+
   /*────────────────────────────────────────────────────────────────────────────── 
                                 media queries
   ────────────────────────────────────────────────────────────────────────────────*/
@@ -521,3 +563,5 @@ ul{
       width: 100%;
   }
   }
+
+  
