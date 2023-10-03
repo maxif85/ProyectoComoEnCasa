@@ -5,12 +5,12 @@
 {% load static %} 
     <section class="elemento"> 
       <h3 id="h3-formulario">Complete el Formulario</h3> <hr>
-        {% comment %} Aca tenemos quer traer el form {% endcomment %}
-        <form action="">
+        <form action="Lucas !" method="post">
           {% csrf_token %}
           {{ contacto_form }}
           <button type="submit">Enviar</button>
       </form>
+
     </section>
     {% comment %} """<script src= {% static "js/validaciones.js" %} ></script>""" {% endcomment %}
 {% endblock contenido_principal %}
