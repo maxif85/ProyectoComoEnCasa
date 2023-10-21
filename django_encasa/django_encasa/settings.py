@@ -76,8 +76,12 @@ WSGI_APPLICATION = "django_encasa.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "codo_a_codo_14",
+        "USER": "postgres",
+        "PASSWORD": "Lucasx90",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
 
