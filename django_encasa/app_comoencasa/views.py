@@ -39,7 +39,12 @@ def contacto(request):
         if formulario.is_valid():
             cliente = clientes(
                 nombre=formulario.cleaned_data['nombre'],
-                apellido=formulario.cleaned_data['apellido']
+                apellido=formulario.cleaned_data['apellido'],
+                direccion=formulario.cleaned_data['direccion'],
+                ciudad = formulario.cleaned_data['ciudad'],
+                zipcode = formulario.cleaned_data['codigo_postal'],
+                nacimiento = formulario.cleaned_data['nacimiento'],
+                email = formulario.cleaned_data['email']
             )
             cliente.save()
             return redirect('index-view')

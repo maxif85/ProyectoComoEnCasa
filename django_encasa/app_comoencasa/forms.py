@@ -11,7 +11,7 @@ class ContactoForm(forms.Form):
 
     ciudad = forms.CharField(label='Ciudad', max_length=100, initial='CABA', widget=forms.TextInput(attrs={'placeholder': 'Ingrese su ciudad'}))
 
-    zipcode = forms.CharField(label='Codigo Postal', max_length=10, widget=forms.TextInput(attrs={'placeholder': 'Ingrese su codigo postal...'}))
+    codigo_postal = forms.CharField(label='Codigo Postal', max_length=10, widget=forms.TextInput(attrs={'placeholder': 'Ingrese su codigo postal...'}))
 
     nacimiento = forms.DateField(label='Nacimiento', widget=forms.DateInput(attrs={'type': 'date'}))
     
