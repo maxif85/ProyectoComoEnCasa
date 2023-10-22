@@ -30,17 +30,27 @@ def menu(request, nro_menu):
 
     return render(request, "menu.html", context)
 
+from django.shortcuts import render, redirect
+from .models import clientes
+
 def contacto(request):
-    formulario = ContactoForm()
-    context =  {
+    if request.method == 'POST':
+        formulario = ContactoForm(request.POST)
+        if formulario.is_valid():
+            cliente = clientes(
+                nombre=formulario.cleaned_data['nombre'],
+                apellido=formulario.cleaned_data['apellido']
+            )
+            cliente.save()
+            return redirect('index-view')
+    else:
+        formulario = ContactoForm()
+
+    context = {
         'contacto_form': formulario
     }
     return render(request, "contacto.html", context)
 
-
-"""def contacto(request):    
-    return render(request, "contacto.html")
-"""    
 
 def sucursales(request):
     return render(request, "sucursales.html")
