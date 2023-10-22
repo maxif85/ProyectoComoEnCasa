@@ -42,7 +42,7 @@ def contacto(request):
                 apellido=formulario.cleaned_data['apellido'],
                 direccion=formulario.cleaned_data['direccion'],
                 ciudad = formulario.cleaned_data['ciudad'],
-                zipcode = formulario.cleaned_data['codigo_postal'],
+                codigo_postal = formulario.cleaned_data['codigo_postal'],
                 nacimiento = formulario.cleaned_data['nacimiento'],
                 email = formulario.cleaned_data['email']
             )
