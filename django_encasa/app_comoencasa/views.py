@@ -31,7 +31,7 @@ def menu(request, nro_menu):
     return render(request, "menu.html", context)
 
 from django.shortcuts import render, redirect
-from .models import clientes
+from  .models import clientes
 
 def contacto(request):
     if request.method == 'POST':
