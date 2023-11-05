@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resumen de Pedido</title>
+</head>
+<body>
+    <h1>Resumen de Pedido</h1>
+    <p>Fecha del Pedido: {{ pedido.fecha }}</p>
+    <p>Cliente: {{ pedido.cliente }}</p>
+
+    <h2>Productos en el Pedido:</h2>
+    <ul>
+        {% for elemento in pedido.elementopedido_set.all %}
+            <li>{{ elemento.producto.nombre }} ({{ elemento.cantidad }} unidades) - ${{ elemento.subtotal }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Monto Total del Pedido: ${{ pedido.monto_total }}</p>
+
+    <a href="{% url 'realizar_pedido' %}">Confirmar Pedido</a>
+</body>
+</html>

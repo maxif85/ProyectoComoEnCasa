@@ -10,27 +10,24 @@ class clientes(models.Model):
     codigo_postal = models.IntegerField()
     nacimiento = models.DateField()
     email = models.EmailField()
-    pedidos = models.ManyToManyField('pedido', related_name='clientes')
 
-class Pedido(models.Model):
-    fecha = models.DateField()
+class Productos(models.Model):
+    nombre_plato = models.CharField(max_length=50, null=False)
+    desc_plato = models.CharField(max_length=80, null=False)
+    precio_plato = models.FloatField()
 
     def __str__(self):
-        return f'Pedido #{self.id}'
+        return self.nombre_plato
+    
+class Pedido(models.Model):
+    cliente = models.ForeignKey(clientes, on_delete=models.CASCADE)  # Si tienes un modelo de cliente
+    productos = models.ManyToManyField(Productos, through='ElementoPedido')
+    monto_total = models.DecimalField(max_digits=10, decimal_places=2)
+    fecha = models.DateTimeField(auto_now_add=True)
 
-class A_domicilio(models.Model):
-    nombre = models.CharField(max_length=150, verbose_name="Nombre" )
+class ElementoPedido(models.Model):
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Productos, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField()
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2)
 
-class Categoria(models.Model):
-    nombre = models.CharField(max_length=150, verbose_name="Nombre" )
-
-class Envios(models.Model):
-    nombre = models.CharField(max_length=150, verbose_name="Nombre" )
-    apellido = models.CharField(max_length=150, verbose_name="Apellido" )
-    direccion = models.CharField(max_length=150, verbose_name="Direccion" )
-    ciudad = models.CharField(max_length=50)
-    codigo_postal = models.IntegerField()
-    email = models.EmailField()
-    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    a_domicilio = models.ManyToManyField(A_domicilio)
-    nombre = models.CharField(max_length=150, verbose_name="Nombre" )

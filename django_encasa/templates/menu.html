@@ -4,124 +4,24 @@
 {% block contenido_principal %}
 {% load static %} 
 	<section id="menu">
+
+		{% for plato in productos %}
 		<div class="plato">
-			<h2>{{plato1|upper}}</h2>            
-			<p>Brochetas de Pollo y carne con pure.</p>
-			<p>$2000</p>
+			<h2>{{ plato.nombre_plato }}</h2>
+			<p>{{ plato.desc_plato }}</p>
+			<p>${{ plato.precio_plato }}</p>
+
 			<div class="producto-contador">
 				<button class="button-contador no-active">-</button>
 				<input type="text" readonly class="producto-numero" value="0">
 				<button class="button-contador">+</button>
 			</div>
-			<br>									
-			<input type="button" class="agregar-al-pedido" id="AgrePed"  value="Agregar al Pedido" data-nombre="Brochetas" data-precio="2000">
-			<img src= {% static "img/brochetasDePolloYcarne.jpeg" %}  alt="Brochetas">
+			<br>
+			<input type="button" class="agregar-al-pedido" id="AgrePed" value="Agregar al Pedido" data-nombre="{{ plato.nombre }}" data-precio="{{ plato.precio }}">
+			<img src="{{ plato.imagen.url }}" alt="{{ plato.nombre }}">
 		</div>
-		
-		<div class="plato">
-			<h2>{{plato2|upper}}</h2>
-			<p>Cachapa con queso y cochino frito.</p>
-			<p>$1500</p>
-			
-			<div class="producto-contador">
-				<button class="button-contador no-active">-</button>
-				<input type="text" readonly class="producto-numero" value="0">
-				<button class="button-contador">+</button>
-			</div>
-			<br>									
-			<input type="button" class="agregar-al-pedido" id="AgrePed"  value="Agregar al Pedido" data-nombre="Cachapa" data-precio="1500">
-			<img src= {% static "img/CachapaConQuesoCochinoFrito.jpeg" %}  alt="Cachapa">
-		</div>
-		
-		<div class="plato">
-			<h2>{{plato3|upper}}</h2>
-			<p>Empanadas de Carne.</p>
-			<p>$350</p>
-			
-			<div class="producto-contador">
-				<button class="button-contador no-active">-</button>
-				<input type="text" readonly class="producto-numero" value="0">
-				<button class="button-contador">+</button>
-			</div>				
-			<br>									
-			<input type="button" class="agregar-al-pedido" id="AgrePed" value="Agregar al Pedido" data-nombre="Empanadas" data-precio="350">
-			<img src= {% static "img/empanadas.jpeg" %}  alt="Empanadas">
-		</div>
+		{% endfor %}
 
-		<div class="plato">
-			<h2>{{plato4|upper}}</h2>
-			<p>Pastel de platano con salsa boloñesa.</p>
-			<p>$1500</p>
-			
-			<div class="producto-contador">
-				<button class="button-contador no-active">-</button>
-				<input type="text" readonly class="producto-numero" value="0">
-				<button class="button-contador">+</button>
-			</div>				
-			<br>									
-			<input type="button" class="agregar-al-pedido" id="AgrePed"  value="Agregar al Pedido" data-nombre="Pastel de Platano" data-precio="1500">
-			<img src= {% static "img/pastelDePlatanoConBoloniesa.jpeg" %}  alt="Pastel de Platano">
-		</div>
-
-		<div class="plato">
-			<h2>{{plato5|upper}}</h2>
-			<p>Pasticho de carne.</p>
-			<p>$2000</p>
-			
-			<div class="producto-contador">
-				<button class="button-contador no-active">-</button>
-				<input type="text" readonly class="producto-numero" value="0">
-				<button class="button-contador">+</button>
-			</div>				
-			<br>									
-			<input type="button" class="agregar-al-pedido" id="AgrePed" value="Agregar al Pedido" data-nombre="Pasticho de Carne" data-precio="2000">
-			<img src= {% static "img/PastichoDecarne.jpeg" %}  alt="Pasticho de carne">
-		</div>
-
-		<div class="plato">
-			<h2>{{plato6|upper}}</h2>
-			<p>Patacon maduro con pollo gratinado.</p>
-			<p>$2000</p>
-			
-			<div class="producto-contador">
-				<button class="button-contador no-active">-</button>
-				<input type="text" readonly class="producto-numero" value="0">
-				<button class="button-contador">+</button>
-			</div>				
-			<br>									
-			<input type="button" class="agregar-al-pedido" id="AgrePed" value="Agregar al Pedido" data-nombre="Patacon Maduro" data-precio="2000">
-			<img src= {% static "img/PataconMaduroConPollo.jpeg" %}  alt="Patacon Maduro">
-		</div>
-
-		<div class="plato">
-			<h2>{{plato7|upper}}</h2>
-			<p>Patacon verde.</p>
-			<p>$1500</p>
-			
-			<div class="producto-contador">
-				<button class="button-contador no-active">-</button>
-				<input type="text" readonly class="producto-numero" value="0">
-				<button class="button-contador">+</button>
-			</div>				
-			<br>									
-			<input type="button" class="agregar-al-pedido" id="AgrePed"  value="Agregar al Pedido" data-nombre="Patacon Verde" data-precio="1500">
-			<img src= {% static "img/pataconVerde.jpeg" %}  alt="Patacon Verde">
-		</div>
-
-		<div class="plato">
-			<h2>{{plato8|upper}}</h2>
-			<p>Sopa de Res.</p>
-			<p>$1700</p>
-			
-			<div class="producto-contador">
-				<button class="button-contador no-active">-</button>
-				<input type="text" readonly class="producto-numero" value="0">
-				<button class="button-contador">+</button>
-			</div>				
-			<br>									
-			<input type="button" class="agregar-al-pedido" id="AgrePed" value="Agregar al Pedido" data-nombre="Sopa de Res" data-precio="1700">
-			<img src= {% static "img/sopaDeRes.jpeg" %}  alt="Sopa de Res">
-		</div>
 	</section>
 
 	<section id="carrito" class="elemento">
