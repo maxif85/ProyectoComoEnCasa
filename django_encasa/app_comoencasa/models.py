@@ -18,3 +18,19 @@ class Pedido(models.Model):
     def __str__(self):
         return f'Pedido #{self.id}'
 
+class A_domicilio(models.Model):
+    nombre = models.CharField(max_length=150, verbose_name="Nombre" )
+
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=150, verbose_name="Nombre" )
+
+class Envios(models.Model):
+    nombre = models.CharField(max_length=150, verbose_name="Nombre" )
+    apellido = models.CharField(max_length=150, verbose_name="Apellido" )
+    direccion = models.CharField(max_length=150, verbose_name="Direccion" )
+    ciudad = models.CharField(max_length=50)
+    codigo_postal = models.IntegerField()
+    email = models.EmailField()
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    a_domicilio = models.ManyToManyField(A_domicilio)
+    nombre = models.CharField(max_length=150, verbose_name="Nombre" )
