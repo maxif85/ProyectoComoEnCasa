@@ -1,45 +1,79 @@
-from django.shortcuts import render
-from datetime import datetime
-from django.http import HttpResponse
-from django.template import loader
-from .forms import ContactoForm
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import logout
 from .models import *
+from django.shortcuts import render
+from .models import Carrito
+
+def index(request):
+    return render(request, 'index.html')
+
+def iniciar_sesion(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                print("Usuario autenticado correctamente")
+                return redirect('index')
+        else:
+            print("Formulario no válido")
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'iniciar_sesion.html', {'form': form})
 
 
-# Create your views here.
-def index(request):    
-    return render(request, "index.html")
+def cerrar_sesion(request):
+    logout(request)
+    return redirect('index')
 
 def menu(request):
     productos = Productos.objects.all()
-    return render(request, 'menu.html', {'productos': productos})
-
-from django.shortcuts import render, redirect
-from  .models import clientes
-
-def contacto(request):
-    if request.method == 'POST':
-        formulario = ContactoForm(request.POST)
-        if formulario.is_valid():
-            cliente = clientes(
-                nombre=formulario.cleaned_data['nombre'],
-                apellido=formulario.cleaned_data['apellido'],
-                direccion=formulario.cleaned_data['direccion'],
-                ciudad = formulario.cleaned_data['ciudad'],
-                codigo_postal = formulario.cleaned_data['codigo_postal'],
-                nacimiento = formulario.cleaned_data['nacimiento'],
-                email = formulario.cleaned_data['email']
-            )
-            cliente.save()
-            return redirect('index-view')
-    else:
-        formulario = ContactoForm()
 
     context = {
-        'contacto_form': formulario
+        'productos': productos,
     }
-    return render(request, "contacto.html", context)
 
-def sucursales(request):
-    return render(request, "sucursales.html")
+    return render(request, 'menu.html', context)
 
+def ver_productos(request):
+    productos = Productos.objects.all()
+    
+    if request.method == 'POST':
+        producto_id = request.POST.get('producto_id')
+        if producto_id:
+            producto = Productos.objects.get(id=producto_id)
+            carrito, creado = Carrito.objects.get_or_create(usuario=request.user)
+            item, _ = ItemCarrito.objects.get_or_create(carrito=carrito, producto=producto)
+            item.cantidad += 1
+            item.save()
+    
+    return render(request, 'ver_productos.html', {'productos': productos})
+
+
+def ver_carrito(request):
+    if request.user.is_authenticated:
+        usuario = request.user
+        carrito = Carrito.objects.filter(usuario=usuario).first()
+        if carrito:
+            items = carrito.itemcarrito_set.all()
+        else:
+            items = []
+
+        return render(request, 'ver_carrito.html', {'items': items})
+    else:
+        return redirect('iniciar_sesion')
+
+def eliminar_del_carrito(request, item_id):
+    if request.user.is_authenticated:
+        try:
+            item = ItemCarrito.objects.get(id=item_id)
+            item.delete()
+        except ItemCarrito.DoesNotExist:
+            pass
+    return redirect('ver_carrito')

@@ -1,0 +1,18 @@
+{% extends "base_comoencasa.html" %}
+{% block titulo %} Carrito {% endblock titulo %}
+
+{% block contenido_principal %}
+    <h1>Carrito de compras</h1>
+    <ul>
+        {% for item in items %}
+            <li>
+                {{ item.producto.nombreProducto }} - Cantidad: {{ item.cantidad }}
+                <!-- Agregar un formulario para eliminar productos del carrito -->
+                <form method="post" action="{% url 'eliminar_del_carrito' item.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Eliminar</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock contenido_principal %}

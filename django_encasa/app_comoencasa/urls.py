@@ -16,14 +16,18 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from app_comoencasa import views
+from .views import *
 
 urlpatterns = [
-    path("", views.index, name="index-view"),
     path("admin", admin.site.urls),
-    path("menu/", views.menu, name="menu-view"),
-    path("contacto/", views.contacto, name="contacto-view"),
-    path("sucursales/", views.sucursales, name="sucursales-view"),
-]
+    path('', index, name='index'),
+    path('menu', menu, name='menu'),
+    path('iniciar_sesion/', iniciar_sesion, name='iniciar_sesion'),
+    path('cerrar_sesion/', cerrar_sesion, name='cerrar_sesion'),
+    path('ver_productos/', ver_productos, name='ver_productos'),
+    path('ver_carrito/', ver_carrito, name='ver_carrito'),
+    path('eliminar_del_carrito/<int:producto_id>/', eliminar_del_carrito, name='eliminar_del_carrito'),
 
-    
+
+]
+#LISTVIEW (clases)

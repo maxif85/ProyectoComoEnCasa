@@ -16,3 +16,5 @@ class ContactoForm(forms.Form):
     nacimiento = forms.DateField(label='Nacimiento', widget=forms.DateInput(attrs={'type': 'date'}))
     
     email = forms.EmailField(label='Mail', widget=forms.EmailInput(attrs={'placeholder': 'minombre@gmail.com...'}))
+
+

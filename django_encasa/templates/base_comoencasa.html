@@ -24,15 +24,20 @@
     <body>
         <!--────────────────navbar menu───────────────-->
         <header>
-            <a class="logo" href="{% url 'index-view' %}">
             <img src={% static "/img/comoEnCasa.png" %} alt="fernet logo" />
             </a>
             <nav>	
                 <ul class="nav-bar">
-                    <li><a class="nav-link" href="{% url 'index-view' %}">Inicio</a></li>
-                    <li><a class="nav-link" href="{% url 'menu-view' %}">Menú</a></li>
-                    <li><a class="nav-link" href="{% url 'sucursales-view' %}">Sucursales</a></li>
-                    <li><a class="nav-link" href="{% url 'contacto-view' %}">Contacto</a></li>
+                  {% if user.is_authenticated %}
+                  ¡Hola, {{ user.username }}!
+                  <a href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+                  {% else %}
+                  <li><a class="nav-link" href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a></li>
+                  {% endif %}
+                  <li><a href="{% url 'ver_productos' %}">Ver Productos</a>
+                  </li>
+                  <li><a href="{% url 'ver_carrito' %}">Ver Carrito</a>
+                  </li>
                 </ul>
             </nav>
         </header>
@@ -56,10 +61,6 @@
                   <div class="footer-col">
                     <h4>Como en casa</h4>
                     <ul>
-                    <li><a href="{% url 'index-view' %}">Inicio</a></li>
-                    <li><a href="{% url 'menu-view' %}">Menú</a></li>
-                    <li><a href="{% url 'sucursales-view' %}">Sucursales</a></li>
-                    <li><a href="{% url 'contacto-view' %}">Contacto</a></li>
                     </ul>
                   </div>
                   <div class="footer-col">

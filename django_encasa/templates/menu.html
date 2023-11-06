@@ -1,40 +1,8 @@
-{% extends "base_comoencasa.html" %}
-{% block titulo %} Menú {% endblock titulo %}
+{% for producto in productos %}
+<div class="plato">
+    <h2>{{ producto.nombreProducto }}</h2>
+    <p>{{ producto.precioUnitario }}</p>
+    <p>${{ producto.descripcion }}</p>
 
-{% block contenido_principal %}
-{% load static %} 
-	<section id="menu">
-
-		{% for plato in productos %}
-		<div class="plato">
-			<h2>{{ plato.nombre_plato }}</h2>
-			<p>{{ plato.desc_plato }}</p>
-			<p>${{ plato.precio_plato }}</p>
-
-			<div class="producto-contador">
-				<button class="button-contador no-active">-</button>
-				<input type="text" readonly class="producto-numero" value="0">
-				<button class="button-contador">+</button>
-			</div>
-			<br>
-			<input type="button" class="agregar-al-pedido" id="AgrePed" value="Agregar al Pedido" data-nombre="{{ plato.nombre }}" data-precio="{{ plato.precio }}">
-			<img src="{{ plato.imagen.url }}" alt="{{ plato.nombre }}">
-		</div>
-		{% endfor %}
-
-	</section>
-
-	<section id="carrito" class="elemento">
-		<h3>Pedido</h3><hr>
-		<ul id="lista-carrito"></ul>
-		<h2 id="total-carrito">Total: $0</h2>
-		<div class="botones-carrito">
-			<input type="button" id="pedir" value="Pedir">
-			<input type="button" id="cancelar" value="Cancelar">
-		</div>
-	</section>
-
-	<script src= {% static "js/carrito.js" %} ></script>
-{% endblock contenido_principal %}
-
-
+</div>
+{% endfor %}
