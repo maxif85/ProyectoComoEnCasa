@@ -27,7 +27,7 @@ urlpatterns = [
     path('ver_productos/', ver_productos, name='ver_productos'),
     path('ver_carrito/', ver_carrito, name='ver_carrito'),
     path('eliminar_del_carrito/<int:producto_id>/', eliminar_del_carrito, name='eliminar_del_carrito'),
-    
+
 
 ]
 #LISTVIEW (clases)

@@ -25,4 +25,4 @@ class ItemCarrito(models.Model):
     cantidad = models.PositiveIntegerField(default=0) 
 
     def __str__(self):
-        return f'{self.cantidad} x {self.producto.nombreProducto}'
+        return f'{self.cantidad} x {self.producto.nombre}'

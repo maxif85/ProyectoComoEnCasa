@@ -5,5 +5,3 @@ from .models import *
 
 admin.site.urls
 admin.site.register(Productos)
-admin.site.register(Carrito)
-admin.site.register(ItemCarrito)

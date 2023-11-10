@@ -30,13 +30,13 @@
                 <ul class="nav-bar">
                   {% if user.is_authenticated %}
                   ¡Hola, {{ user.username }}!
-                  <li><a class="nav-link" href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+                  <a href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
                   {% else %}
                   <li><a class="nav-link" href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a></li>
                   {% endif %}
-                  <li><a class="nav-link" href="{% url 'ver_productos' %}">Ver Productos</a>
+                  <li><a href="{% url 'ver_productos' %}">Ver Productos</a>
                   </li>
-                  <li><a class="nav-link" href="{% url 'ver_carrito' %}">Ver Carrito</a>
+                  <li><a href="{% url 'ver_carrito' %}">Ver Carrito</a>
                   </li>
                 </ul>
             </nav>
