@@ -42,6 +42,7 @@ def menu(request):
     return render(request, 'menu.html', context)
 
 def ver_productos(request):
+    mensaje = None
     productos = Productos.objects.all()
     
     if request.method == 'POST':
@@ -52,8 +53,10 @@ def ver_productos(request):
             item, _ = ItemCarrito.objects.get_or_create(carrito=carrito, producto=producto)
             item.cantidad += 1
             item.save()
+            mensaje = f"{producto.nombreProducto} se ha agregado al carrito."
     
-    return render(request, 'ver_productos.html', {'productos': productos})
+    return render(request, 'ver_productos.html', {'productos': productos, 'mensaje': mensaje})
+
 
 
 def ver_carrito(request):
@@ -68,11 +71,11 @@ def ver_carrito(request):
         return render(request, 'ver_carrito.html', {'items': items})
     else:
         return redirect('iniciar_sesion')
-
-def eliminar_del_carrito(request, item_id):
+    
+def eliminar_del_carrito(request, producto_id):
     if request.user.is_authenticated:
         try:
-            item = ItemCarrito.objects.get(id=item_id)
+            item = ItemCarrito.objects.get(id=producto_id)
             item.delete()
         except ItemCarrito.DoesNotExist:
             pass
