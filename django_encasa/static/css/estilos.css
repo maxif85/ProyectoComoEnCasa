@@ -19,6 +19,7 @@
     font-family: 'Ewert', cursive;
     font-family: 'Raleway', sans-serif;
     overflow-x: hidden;
+    list-style: none !important;
   }
   
   main{
@@ -195,8 +196,8 @@
 ────────────────────────────────────────────────────────────────────────────────*/
   #menu{
     display: flex;
-    flex-wrap: wrap;
-    margin: 5rem 3rem 0 3rem;
+    margin: auto;
+    justify-content: center;
   }
 
   .plato{
@@ -224,7 +225,9 @@
     object-fit: cover;
     border-radius: 0px 0px 10px 10px;
   }
-  .plato h2{
+  h2{
+    display: flex;
+    justify-content: center;
     font-size: 1.5rem;
     color: var(--principal-fonts-color);
     padding-top: 1rem;

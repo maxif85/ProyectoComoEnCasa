@@ -1,16 +1,25 @@
 {% extends "base_comoencasa.html" %}
 {% block contenido_principal %}
-    <h1>Productos Disponibles</h1>
-    <ul>
-        {% for producto in productos %}
-            <li>
-                {{ producto.nombreProducto }} - ${{ producto.precioUnitario }}
-                <form method="post" action="{% url 'ver_productos' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="producto_id" value="{{ producto.id }}">
-                    <button type="submit">Agregar al carrito</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
+    <h2>Productos Disponibles</h2>
+        <div id="menu">    
+                {% for producto in productos %}
+                <div class="plato">
+                    <li>
+                        <h2>{{ producto.nombreProducto }}</h2> 
+                        <p>${{ producto.precioUnitario }}</p>
+                        <form method="post" action="{% url 'ver_productos' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                            <button type="submit">Agregar al carrito</button>
+                        </form>
+                    </li>
+                </div>
+                {% endfor %}
+                {% if mensaje %}
+                <div class="alert alert-info">
+                    {{ mensaje }}
+                </div>
+                {% endif %}
+
+        </div>
 {% endblock %}
