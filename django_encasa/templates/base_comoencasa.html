@@ -34,6 +34,8 @@
                   {% else %}
                   <li><a class="nav-link" href="{% url 'iniciar_sesion' %}">Iniciar Sesión</a></li>
                   {% endif %}
+                  <li><a class="nav-link" href="{% url 'platos' %}">Nuestros platos</a>
+                  </li>
                   <li><a class="nav-link" href="{% url 'ver_productos' %}">Ver Productos</a>
                   </li>
                   <li><a class="nav-link" href="{% url 'ver_carrito' %}">Ver Carrito</a>
@@ -64,7 +66,7 @@
                     </ul>
                   </div>
                   <div class="footer-col">
-                    <h4>Nuestros platos</h4>
+                    <h4><a class="nav-link" href="{% url 'platos' %}">Nuestros platos</a></h4>
                     <ul>
                       <li><a href="#">Brochetas</a></li>
                       <li><a href="#">Empanadas</a></li>

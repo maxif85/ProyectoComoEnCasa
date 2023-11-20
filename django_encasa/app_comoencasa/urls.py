@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import *
+from django.conf import settings
+from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
     path("admin", admin.site.urls),
@@ -27,7 +30,11 @@ urlpatterns = [
     path('ver_productos/', ver_productos, name='ver_productos'),
     path('ver_carrito/', ver_carrito, name='ver_carrito'),
     path('eliminar_del_carrito/<int:producto_id>/', eliminar_del_carrito, name='eliminar_del_carrito'),
+    path('platos/', views.PlatosListView.as_view() , name='platos' )
     
 
 ]
+
+urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
 #LISTVIEW (clases)

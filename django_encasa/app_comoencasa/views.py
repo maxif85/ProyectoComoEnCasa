@@ -5,6 +5,7 @@ from django.contrib.auth import logout
 from .models import *
 from django.shortcuts import render
 from .models import Carrito
+from django.views.generic import ListView
 
 def index(request):
     return render(request, 'index.html')
@@ -80,3 +81,9 @@ def eliminar_del_carrito(request, producto_id):
         except ItemCarrito.DoesNotExist:
             pass
     return redirect('ver_carrito')
+
+
+class PlatosListView(ListView):
+    template_name = "nuestros_platos.html"
+    context_object_name = "productos"
+    model = Productos

@@ -1,6 +1,6 @@
 {% extends "base_comoencasa.html" %}
 {% block contenido_principal %}
-    <h2>Productos Disponibles</h2>
+    <h2>Nuestros platos</h2>
     {% if mensaje %}
     <div class="alert alert-info" style="display: flex; justify-content: center; align-items: center; margin: auto;">
         {{ mensaje }}
@@ -11,13 +11,8 @@
                 <div class="plato">
                     <li>
                         <h2>{{ producto.nombreProducto }}</h2> 
-                        <p>${{ producto.precioUnitario }}</p>
                         <img src= {{ producto.imagenProducto.url }} />
-                        <form method="post" action="{% url 'ver_productos' %}">
-                            {% csrf_token %}
-                            <input type="hidden" name="producto_id" value="{{ producto.id }}">
-                            <button type="submit">Agregar al carrito</button>
-                        </form>
+                        <p> {{ producto.descripcion }} </p>
                     </li>
                 </div>
                 {% endfor %}
