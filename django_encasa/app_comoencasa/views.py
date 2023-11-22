@@ -33,6 +33,9 @@ def cerrar_sesion(request):
     logout(request)
     return redirect('index')
 
+# def contacto(request):
+#     return render(request, 'contacto.html')
+
 def menu(request):
     productos = Productos.objects.all()
 
