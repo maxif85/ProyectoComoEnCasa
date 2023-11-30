@@ -31,7 +31,8 @@ urlpatterns = [
     path('ver_carrito/', ver_carrito, name='ver_carrito'),
     path('contacto/', contacto, name='contacto'),
     path('eliminar_del_carrito/<int:producto_id>/', eliminar_del_carrito, name='eliminar_del_carrito'),
-    path('platos/', views.PlatosListView.as_view() , name='platos' )
+    path('platos/', views.PlatosListView.as_view() , name='platos' ),
+    path('crear_producto/', views.PlatosCreateView.as_view(), name='crear_producto'),
     
 
 ]

@@ -4,8 +4,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout
 from .models import *
 from django.shortcuts import render
-from .models import Carrito
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from .forms import ProductosForm
 
 def index(request):
     return render(request, 'index.html')
@@ -90,3 +90,9 @@ class PlatosListView(ListView):
     template_name = "nuestros_platos.html"
     context_object_name = "productos"
     model = Productos
+
+class PlatosCreateView(CreateView):
+    model = Productos
+    form_class = ProductosForm
+    template_name = "crear_producto.html"
+    context_object_name = "productos"
