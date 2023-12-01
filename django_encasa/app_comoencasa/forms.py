@@ -13,8 +13,9 @@ class ContactoForm(forms.Form):
     email = forms.EmailField(label='Mail', widget=forms.EmailInput(attrs={'placeholder': 'minombre@gmail.com...'}))
 
 class ProductosForm(forms.ModelForm):
-    class META:
+    class Meta:
         model = Productos
-        field = ['nombreProducto', 'precioUnitario', 'descripcion']
+        fields = ['nombreProducto', 'precioUnitario' , 'descripcion']
+        
 
 

@@ -6,6 +6,7 @@ from .models import *
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .forms import ProductosForm
+from django.urls import reverse_lazy
 
 def index(request):
     return render(request, 'index.html')
@@ -95,4 +96,4 @@ class PlatosCreateView(CreateView):
     model = Productos
     form_class = ProductosForm
     template_name = "crear_producto.html"
-    context_object_name = "productos"
+    success_url = reverse_lazy('platos')
